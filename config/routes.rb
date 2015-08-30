@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+
   devise_for :users
-  resources :restuarants
+  resources :restuarants do 
+      resources :reviews
+  end
+
   get 'pages/about'
 
   get 'pages/contact'
