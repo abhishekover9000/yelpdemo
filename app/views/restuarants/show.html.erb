@@ -1,6 +1,9 @@
 <div class="row">
 <div class="col-md-6">
 <%= image_tag @restuarant.image_url %>
+
+<div class="star-rating" data-score= <%= @avgreviews %> ></div>
+<p><%= @reviews.length %> Reviews </p>
 <h2>
   <%= @restuarant.name %>
 </h2>
@@ -24,15 +27,24 @@
 </div>
 <div class="col-md-6">
 	<h2> Reviews </h2>
-	<% if @reviews.blank? %>
-		<h3> No reviews yet. Be the first to write one! </h3>
-	<% else %>
-		<% @reviews.each do |review| %>
+	<table class="table">
+		<tbody>
+		<% if @reviews.blank? %>
+			<h3> No reviews yet. Be the first to write one! </h3>
+		<% else %>
+			<% @reviews.each do |review| %>
+			<tr>
 		<!--<p> <%= review.rating %> </p>-->
-		<div class="star-rating" data-score= <%= review.rating %>> </div>
-		<p> <%= review.comment %> </p>
-		<% end %>
-	<%end%> 
+			<td>
+			<div class="star-rating" data-score= <%= review.rating %>> </div>
+			<p> <%= h(review.comment).gsub(/\n/, '<br/>').html_safe %> </p>
+			</td>
+			</tr>
+			<% end %>
+		<%end%> 
+		</tbody>
+	</table>
+	
 </div>
 </div>
 <div class="row">
