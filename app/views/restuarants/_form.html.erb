@@ -1,7 +1,8 @@
 <%= form_for(@restuarant, :html=>{ multipart: true}) do |f| %>
   <% if @restuarant.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@restuarant.errors.count, "error") %> prohibited this restuarant from being saved:</h2>
+   <div id="error_explanation" class="alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hiden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(@restuarant.errors.count, "error") %> prohibited this restuarant from being saved:</h4>
 
       <ul>
       <% @restuarant.errors.full_messages.each do |message| %>
@@ -13,19 +14,19 @@
 
   <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name, class: "form-control"%>
+    <%= f.text_field :name, class: "form-control", placeholder: "YelpDemo's Cafe"%>
   </div>
   <div class="form-group">
     <%= f.label :address %><br>
-    <%= f.text_field :address, class: "form-control" %>
+    <%= f.text_field :address, class: "form-control", placeholder:"111 YelpDemo Way San Francisco CA"%>
   </div>
   <div class="form-group">
     <%= f.label :phone %><br>
-    <%= f.text_field :phone, class: "form-control" %>
+    <%= f.text_field :phone, class: "form-control", placeholder:"415-222-2222"%>
   </div>
   <div class="form-group">
     <%= f.label :website %><br>
-    <%= f.text_field :website, class: "form-control" %>
+    <%= f.text_field :website, class: "form-control", placeholder: "http://yelpdemoa.herokuapp.com" %>
   </div>
    <div class="form-group">
     <%= f.label :image %><br>

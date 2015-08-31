@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :reviews, dependent: :destroy
   # if user is deleted, all users will be deleted
+  validates :first_name, :last_name, presence: true
 end
